@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Chat With Us</title>
+    <link rel="icon" href="Logo1.png" type="image/png">
+
+    <style>
+      body {
+          font-family: Cambria, sans-serif;
+          margin: 0; 
+          overflow-y: scroll;
+      }
+      #header {   
+        background-color: #754f33;
+        margin-top:0px;
+        width: 100%;
+        text-align: center;
+        display:flex;
+        padding: 10px 20px;
+      }
+      h1{
+        font-family:'Gistesy';
+        font-size:40px;
+        margin:0;
+        color:white;
+        padding-left:380px;
+      }
+      h2{
+        margin-left:15px;
+      }
+      h3{
+        color:white;
+      }
+      #chat-container {
+        width: 800px;
+        height:300px;
+        margin: 40px auto;
+        background-color:#754f33;
+        box-shadow:5px 5px 7px rgb(138,111,3);
+        padding: 10px;
+        overflow-y: scroll;
+        max-height: 300px;
+        font-family:Cambria;
+      }
+      input[type="text"]{
+        font-size:20px;
+        border:2px solid #754f33;
+        box-shadow:none;
+        margin-top:7px;
+        border-radius:7px;
+      }
+      input[type="text"]:focus{
+        outline:none;
+        box-shadow:2px 2px 2px rgb(138,111,3);
+      }
+      #chat-messages {
+        list-style-type: none;
+        padding: 0;
+      }
+      .user-message{
+        text-align:right;
+        padding:5px;
+        margin-top: 20px;
+        border-radius:18px;
+        background-color:#754f33;
+        color:white;
+        margin-bottom:5px;
+        box-shadow:2px 2px rgb(138,111,2);
+        font-size:17px;
+      }
+      .bot-message{
+        text-align:left;
+        border: 1px solid lightgrey;
+        padding:5px;
+        border-radius:18px;
+        background-color:whitesmoke;
+        color:#754f33;
+        margin-bottom:5px;
+        font-size:17px;
+      }
+      .chat-containerChanged{
+        background-color:white !important;
+        border:2px solid #754f33;
+      }
+      .heading3Changed{
+        color:black;
+      }
+      .options{
+        padding:10px;
+        margin-bottom: 40px;
+        border-radius:30px;
+        background-color:white;
+        color:#754f33;
+        font-size:14px;
+        box-shadow:3px 3px 3px rgb(138,111,3);
+        cursor:pointer;
+      }
+      .options:hover{
+        background-color:rgb(138,111,2);
+        color:white;
+        border:2px solid khaki;
+      }
+
+      #headingM{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: #754f33;
+        padding-bottom: 6px;
+      }
+
+      #heading3{
+        background: none;
+        margin-top:-6px;
+        margin-bottom:17px;
+        color:black;
+        text-shadow:1px 1px #754f33;
+      }
+    </style>
+    <link href="https://db.onlinewebfonts.com/c/20e9fce1ca54ce1d7b7a7329de9bdaef?family=Gistesy" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js"
+></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel ="stylesheet" href= "AlertBoxCSS.css">
+    <script src="profilePhoto.js"></script>
+    <script src="Navigation.js"></script>
+    <link rel ="stylesheet" href= "HeaderCSS.css">
+    <link rel ="stylesheet" href= "FooterCSS.css">
+    <link rel ="stylesheet" href= "navstyle.css">
+
+  </head>
+  <body onload="changePhoto()">
+
+   
+    <header id="Header">
+      <div id = 'mySidebar' class = 'sidebar'>
+          <a href = 'javascript:void(0)' class = 'close' onclick = "closeNav()">x</a>
+          <a href = "#">About</a>
+          <a href = "MainPage.html">In Between</a>
+          <a href = "ExplorePage.html">Area-Specific</a>
+          <a href = "searchUsers.html">Search Users</a>
+          <a href = "chatWithUs.html">Need Help?</a>
+          <a href = "FAQ_Page.html">FAQ</a>
+          <a href = "feedbackPage.html">Feedback</a>
+      </div>
+      <div class = "header">
+          <div id ="hamburger" >
+              <button class ='open' onclick = "openNav()">&#9776;</button>
+          </div>
+          <h1 id="Brand">In Between</h1>
+
+          <div class="profile">
+              <p id="profileName"> <p>
+              <p id="profileTag"></p>
+          </div>
+
+          <div class="dropdownL">
+                  <a href="#" disabled><img src="" id="profile-icon"></a>
+              <div class="dropdown-contentL">
+                  <a href="LogInPage.html"  >Log Out</a>
+
+              </div>
+          </div>
+
+
+      </div>
+  </header>
+
+
+
+    <h2 id="headingM">Chat With Us</h2><hr style = "border:1px solid rgb(138,111,2);">
+    <div id="chat-container">
+        <h3 id = "heading3">How can we help you? </h3>
+        <div id = "options-div">
+          <span class = "options" onclick ="containerChange();handleOptionInput('malls')">Malls</span> &nbsp;&nbsp;&nbsp;
+          <span class = "options" onclick ="containerChange();handleOptionInput('lakes')">Lakes</span><br><br><br>
+          <span class = "options" onclick ="containerChange();handleOptionInput('parks')">Parks</span>&nbsp;&nbsp;&nbsp;
+          <span class = "options" onclick ="containerChange();handleOptionInput('dessert')">desserts</span>&nbsp;&nbsp;&nbsp;
+          <span class = "options" onclick ="containerChange();handleOptionInput('biryani')">Biryani</span><br><br><br>
+          <span class = "options" onclick ="containerChange();handleOptionInput('morning walk')">Places for Morning Walk </span><br><br><br>
+          <span class = "options" onclick ="containerChange();handleOptionInput('restaurants in hsr layout')">Restaurants in HSR layout </span><br>
+        </div>
+        <ul id="chat-messages"></ul>
+        <input type="text" id="user-input" placeholder="write here..." size = '40' onclick ="containerChange()">
+    </div>
+
+
+    <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="footer-col">
+                  <h4> Company </h4>
+                  <ul>
+                      <li id="links" ><a href='#' disabled>About us</a></li>
+                      <li id="links"><a href='#' disabled> Our Services</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4> Policy </h4>
+                  <ul>
+                      <li id="links"><a href='privacyPolicy.html'>Privacy Policy</a></li>
+                      <li id="links"><a href='#' disabled> Affiliate Program</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4> Get Help</h4>
+                  <ul>
+                      <li id="links"><a href='FAQ_Page.html'> FAQ </a></li>
+                      <li id="links"><a href='chatWithUs.html'>  Chat with Us </a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4> follow us </h4>
+                  <div class="social-links">
+                      <a href='#'><i class="fab fa-facebook-f"></i></a>
+                      <a href='#'><i class="fab fa-twitter"></i></a>
+                      <a href='#'><i class="fab fa-instagram"></i></a>
+                      <a href='#'><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+
+              </div>
+                  <h1 id="copyright">Copyright © <strong id="logoF">InBetween</strong></h1>
+          </div>
+      </div>
+  </footer>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const chatContainer = document.getElementById('chat-container');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const botInput = document.getElementsByClassName('options');
+
+        function addMessage(message, isUser) {
+          const li = document.createElement('li');
+          const br = document.createElement('br');
+          li.textContent = message;
+          if (isUser) {
+            li.classList.add('user-message');
+          }
+          else{
+            li.classList.add('bot-message');
+          }
+          chatMessages.appendChild(li);
+          chatMessages.appendChild(br);
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function handleUserInput() {
+          const message = userInput.value.trim();
+          if (message !== '') {
+            addMessage(message, true);
+            handleBotResponse(message);
+            userInput.value = '';
+          }
+        }
+
+        function handleOptionInput(s){
+          addMessage(s,true);
+          handleBotResponse(s);
+        }
+
+        function handleBotResponse(userInput) {
+          let botResponse = '';
+          let p = document.createElement('p');
+          if (userInput.toLowerCase().includes('plan meetup')) {
+            botResponse = "Sure! Let's start planning a meetup. When would you like to meet?";
+          } else if (userInput.toLowerCase().includes('cafe')) {
+            botResponse = "Cafe sounds good. Would recommed Dome Cafe, Hoot Cafe & Brewery, Cafe Azzure, Lavonne Cafe.";
+          } else if(userInput.toLowerCase().includes('restaurants in hsr layout')){
+            botResponse = "Sure! Here are some nicely rated restaurants in HSR layout, Dome Cafe, Biryani Zone, HSR High Street, Broadway, Go Native, Copper Kitchen";
+          } else if (userInput.toLowerCase().includes('biryani')){
+            botResponse = "Here are the best places to eat Biryani, Copper Kitchen, Biryani Zone, Aromas of Biryani"
+          } else if (userInput.toLowerCase().includes('dessert')){
+            botResponse = "Had a nice meal? Have even better desserts here,  Polar Bear, Corner House, Cream Stone";
+          } else if (userInput.toLowerCase().includes('parks')){
+            botResponse = "Cubbon park, Hosa Lake Park, Harlur Lake Park, Bugle Rock Park are some of the most famous parks in Bangalore.";
+          } else if (userInput.toLowerCase().includes('lakes')){
+            botResponse = "Sure! Ulsoor lake, Sankey Tank, Hebbal lake, Kaikondrahalli lake are very famous in Bangalore."
+          } else if (userInput.toLowerCase().includes('morning walk')){
+            botResponse = "Your Morning walk is sure to be better at Tree park, Freedom park, Sankey Tank, Lumbini Gardens.";
+          } else if (userInput.toLowerCase().includes('malls')){
+            botResponse = "Orion Mall, Lulu Mall, Phoenix Marketcity Mall, Nexus Koramangala are one of the biggest and highly rated malls in Bangalore.";
+          } else {
+            botResponse = "I'm sorry, I didn't understand that. Can you please repeat?";
+          }
+          addMessage(botResponse, false);
+        }
+        userInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            handleUserInput();
+          }
+        });
+        for (let i = 0; i < botInput.length; i++) {
+            botInput[i].addEventListener('click', function(event) {
+              handleOptionInput(event.target.textContent);
+          });
+        }
+      });
+      function containerChange(){
+          let x = document.getElementById("chat-container");
+          let y = document.getElementById("heading3");
+          x.classList.add('chat-containerChanged');
+          y.classList.add('heading3Changed');
+      }
+
+    </script>
+  </body>
+</html>

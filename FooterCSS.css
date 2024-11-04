@@ -1,0 +1,89 @@
+
+.footer{
+    background-color: #754f33;
+    margin: 0px 0px;
+    padding: 35px 0;
+    padding-left: 50px;
+    max-height: 202px;
+    bottom: 0;
+    
+}
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+
+}
+.footer-col h4{
+
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    margin-left:40px;
+    font-weight: 500;
+    position: relative;
+}             
+.footer-col h4::before{
+    
+    content:' ';
+    position: absolute;
+    left:0;
+    bottom:-10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #f4e6c8;
+    display: block;
+    transition: all 0.3s ease;   
+    padding: 0;
+}
+.footer-col ul li a:hover{
+    color:#ffffff;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    text-align: center;
+    margin:0 10px 10px 0;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+#links{
+    list-style-type: none;
+
+}
+
+
+#copyright{
+    color: #8b6e52;
+    font-size: smaller;
+    font-weight: bolder;
+    padding-left: 530px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#logoF{
+    font-family: 'Gistesy';
+    font-size: 15px;
+}

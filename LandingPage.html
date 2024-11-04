@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css">
+
+    <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://db.onlinewebfonts.com/c/20e9fce1ca54ce1d7b7a7329de9bdaef?family=Gistesy" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="icon" href="Logo1.png" type="image/png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel ="stylesheet" href= "FooterCSS.css">
+    <script src="Navigation.js"></script>
+    <script>
+
+        function showAlert(text) {
+            alert('Login '+ text);
+        }
+    </script>
+
+    <style>
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:#ebdcd1; /* Default background color */
+            color: #754f33; /* Default text color */
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(141deg, #ebdcd1 0%, #eacdb8 51%, #f3dfd1 75%);
+            cursor: none;
+            
+}
+        marquee{
+            width: 100%;
+            background-color: #754f33;
+            padding: 30px 0;
+            color:white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        .section{
+            display: grid;
+            place-items: center;
+            align-content: center;
+            min-height: 50vh;
+
+        }
+        .hidden{
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateX(-100%);
+            transition: all 1s;
+        }
+        .show{
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+        }
+        .cursor-dot{
+            width: 10px;
+            height: 5px;
+            background-color: rgb(255, 255, 255);
+        }
+        .cursor-outline{
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+        }
+        .cursor-dot, .cursor-outline{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            transform: translate(-50%,-50%);
+            border-radius: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }     
+.star {
+    position: fixed;
+    pointer-events: none;
+}
+.star:before, .star:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '\2726';
+    font-size: 15px;
+}
+.star:before {
+    color: transparent;
+    text-shadow: 0 0 3px #ebdcd1;
+}
+.star:after {
+    background: #754f33;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+*{
+
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1170px;
+    background-color: #754f33;
+    margin:auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+.banner {
+    text-align: center;
+    width: 85%;
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-color: #cfb39e;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+
+}
+#brand{
+    display: flex;
+    justify-content: center;
+}
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: inherit;
+}
+.content h1 {
+    font-size: 70px;
+    margin-top: -20px;
+}
+.cssbuttons-io-button {
+  background: #754f33;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #754f33;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: none;
+
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #754f33;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #754f33;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.sidebar a:hover{
+    color: #b22222;;
+}
+.sidebar .close{
+    position:absolute;
+    top:0;
+    right:25px;
+    font-size:36px;
+    margin-left:50px;
+}
+.open{
+    font-size:20px;
+    cursor:pointer;
+    background-color: #111;
+    color:white;
+    padding:10px 15px;
+    border:none;
+    border-radius:5px;
+}
+.open:hover{
+    background-color: #444;
+}
+
+.banner {
+    margin-top: 50px;
+    text-align: center;
+    width: 85%;
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-color: #cfb39e;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+
+}
+#footer{
+    background-color: #754f33;
+    color: #ebdcd1;
+    cursor: none;
+
+}
+.sidebar{
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:50;
+    top:0px;
+    left:0;
+    background-color:#fff8dc;
+    overflow-x:hidden;
+    padding-top:75px;
+    transition:0.5s; 
+}
+.sidebar a{
+    padding: 8px 8px 8px 32px;
+    text-decoration:none;
+    font-size:25px;
+    color:#000000;
+    display:block;
+    transition:0.3s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.swiper-wrapper{
+    height: 400px;
+    width: 20px;
+}
+.swiper {
+    width: 50%;
+    height: 50%;
+    margin: 100px 100px 100px 0px;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+  }
+  .swiper-container {
+            width: 80%;
+            height: 50%;
+            margin: 100px auto;
+            border-radius: 25px;
+  }
+  .swiper-button-prev, .swiper-button-next {
+            color: #754f33;
+        }
+        .swiper-pagination-bullet {
+            background-color: #754f33;
+        }
+  .swiper-slide img {
+    display: block;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .logos{
+    display: flex;
+  }
+  .logo:nth-child(2){
+    transition-delay: 200ms;
+  }
+  .logo:nth-child(3){
+    transition-delay: 400ms;
+  }
+  .logo:nth-child(4){
+    transition-delay: 600ms;
+  }
+  .sec{
+    display:flex;
+    margin-top:30px;
+    margin-left: 19px;
+    gap: 100px;
+  }
+  .card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 20px 20px 60px #bebebe,
+  ;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 190px;
+  height: 240px;
+  z-index: 2;
+  background: rgba(211, 200, 174, 0.95);
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid rgb(230, 164, 93);
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #866512;
+  opacity: 1;
+  filter: blur(12px);
+  animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+B{
+    font-family: 'Gistesy';
+    font-weight: lighter;
+}
+.main{
+  height:100vh;
+  width:100%;  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.roller{
+  height: 20px;
+  line-height: 200px;
+  position: relative;
+  overflow: hidden; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  color: #ffffff;
+}
+
+
+#spare-time{
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 1rem;
+  color: #000000;
+  
+}
+
+.roller #rolltext {
+  position: absolute;
+  top: 0;
+  animation: slide 10s infinite;  
+}
+
+@keyframes slide {
+  0%{
+    top:0;
+  }
+  25%{
+    top: -12rem;    
+  }
+  50%{
+    top: -25rem;
+  }
+  72.5%{
+    top: -38rem;
+  }
+}
+
+  
+  @keyframes slide-mob {
+  0%{
+    top:0;
+  }
+  25%{
+    top: -2.125rem;    
+  }
+  50%{
+    top: -4.25rem;
+  }
+  72.5%{
+    top: -6.375rem;
+  }
+}
+@keyframes animatedBackground {
+    to {
+        background-size: 100% 100%;
+    }
+}
+
+.center{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p123{
+            width: 70%;
+            font-size: 30px;
+            display: block;
+            text-align: center;
+        }
+
+        .char{
+            font-size: 40px;
+            height: 40px;
+            animation: an 1s ease-out 1 both;
+            display: inline-block;
+        }
+
+        @keyframes an{
+            from{
+                opacity: 0;
+                transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+            }
+            to{
+                opacity: 1;
+                transform: perspective(500px) translate3d(0, 0, 0);
+            }
+        }
+.mylink{
+  position: absolute;
+  z-index: 150;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: right;
+  padding: .6rem;
+}
+
+.mylink a{
+  font-family: Calibri;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  opacity: .5;
+  transition: opacity .3s;
+  text-decoration: none
+}
+.mylink a:hover{
+  opacity: 1
+}
+
+
+      
+#preloader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: #f4e6c8;
+    position: fixed;
+    z-index: 100;
+}
+.h1loader{
+  font-family:'Gistesy';
+    position: relative;
+    font-size: 8em;
+    color: #f4e6c8;
+    border-bottom: 50px solid #f4e6c8;
+    Letter-spacing: 0.05em;
+    line-height: 1.2em;
+}
+.h1loader::before{
+  margin-top: -100px;
+    font-family:'Gistesy';
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 180px;
+    padding-top: 100px;
+    width: 100%;
+    color: #734e2f;
+    overflow: hidden;
+    border-bottom: 16px solid #734e2f;
+    animation: animate 1s linear ;
+}
+@keyframes animate{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+    
+ 
+<div id="preloader">
+  <h1 class="h1loader"  data-text="InBetween"> InBetween </h1>
+</div>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XWvGeFqfEHDO77v1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XWvGeFqfEHDO77v1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XWvGeFqfEHDO77v1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XWvGeFqfEHDO77v1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div id = 'mySidebar' class = 'sidebar'>
+        <a href = 'javascript:void(0)' class = 'close' onclick = "closeNav()">x</a>
+        <a href = "LandingPage.html" >About</a>
+        <a href = "#" onclick="showAlert('to find place between 2 points')">In Between</a>
+        <a href = "#" onclick="showAlert('to find places around you')">Area-Specific</a>
+        <a href = "#" onclick="showAlert('to search for friends')">Search Users</a>
+        <a href = "chatWithUs.html" >Need Help?</a>
+        <a href = "FAQ_Page.html">FAQ</a>
+        <a href = "#" onclick="showAlert('to give feedback')">Feedback</a>
+    </div>
+    <div id ="hamburger" >
+        <button class ='open' onclick = "openNav()"  style="cursor: none;background-color: white;color: #754f33;top:15px; left:15px; position:fixed;">&#9776;</button>
+    </div>    <div class="cursor-dot"></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div id="brand">
+        <div class="banner">
+            <div class="content">
+                <h1 style="font-family:'Gistesy'; font-size:250px; "> In Between </h1>
+                <div>
+                    <a href="LogInPage.html" style="text-decoration:none">
+                    <button class="cssbuttons-io-button" style="margin: -150px 0px 0px 650px;">
+                        Login Here
+                        <div class="icon">
+                          <svg
+                            height="24"
+                            width="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path
+                              d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </div>
+                      </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    <marquee direction="scroll">
+        © 2024 <B>InBetween</B> All rights reserved.
+
+Unless otherwise specified, the content of this website, including text, graphics, logos, images, and other materials, is the property of <B>InBetween</B> and is protected by copyright law. 
+
+You may not reproduce, modify, distribute, or commercially exploit any content on this website without written permission from <B>InBetween</B>. 
+
+We encourage you to share our content, but please do so in a way that is respectful of our copyright. You may link to our website or share excerpts of our content, but you must provide proper attribution to <B>InBetween</B>.
+
+    </marquee>
+    <section class="hidden" style="align-items: center;">
+        <h1 style="font-family: 'Times New Roman', Times, serif;font-size: 105px;padding: 140px;"> PLAN TO MEET WITH YOUR FRIENDS HERE </h1>
+        <br>
+        
+    </section>
+
+    <section class="hidden" style="align-items: center;">
+    <h1 style="font-family: 'Times New Roman', Times, serif;font-size: 105px;padding: 0px 140px;letter-spacing: -2%;"> ADD RESPECTIVE THE LOCATION HERE </h1>
+    </section>
+    <section class="hidden" style="margin: 100px;text-align: center;">
+        <h1 style="font-size: 50px;"> FEATURES THAT ARE PRESENT IN THE WEBSITE </h1>
+        <br><br>
+        <p class="p123"  style="line-height: 24px;"> Overwhelmed by endless "what should we do?" texts with your friends?  Inbetween is here to bridge the gap between friend dates and indecision! Our website is your ultimate wingman for planning the perfect hangout.
+
+            Whether you're craving lively chatter over coffee, a relaxed catch-up, or an adventurous escapade, Inbetween helps you find the ideal spot to suit your mood and group size. Dive into a curated list of awesome places, from cozy cafes and trendy restaurants to exciting activities and hidden gems. Filter by interests, discover unique spots you never knew existed, and get inspired by other friend groups' outings.
+            
+            Inbetween goes beyond just finding a place. Our blog offers a treasure trove of fun activity ideas, conversation starters, and tips for a memorable friend date. Ditch the endless planning stress and let Inbetween help you create unforgettable memories with your besties! Sign up for free today and get started on your next epic friend date!</p>
+    </section>
+    <section style="margin: -200px 0px -100px 0px;font-family: 'Times New Roman', Times, serif;box-shadow: #210f00;border-radius: 50%;">
+    <div class="main">
+        <h1 style="font-size: 100px;background-color:#754f33;padding: 60px 110px 30px 110px;color: #f3e6d3;box-shadow: #210f00;border-radius: 10% / 25%;"> DISCOVER IT ALL <div class="roller" style="padding: 100px;">
+          <span id="rolltext" > DINE <br/>
+            UNWIND <br/>
+          EXPLORE <br/>SHOP <br/>
+          </div>
+          </h1>
+          
+        </div>
+    </section>
+    <!--<h1 style="font-family: sans-serif;font-size: 50px;text-align: left;" id="he1"> PLAN TO MEET WITH YOUR FRIENDS!! </h1>
+    <br><br>
+    <h2 style="font-family: sans-serif;font-size: 45px;text-align: right;" id="he2"> ADD YOUR LOCATION HERE AND MEET ASAP </h2>-->
+
+    <!--<div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="ad1.jpeg" style="height: 800px;width: 700px;align-content: center;"></div>
+          <div class="swiper-slide"><img src="ad2.jpeg" style="height: 800px;width: 700px;align-content: center;"></div>
+          <div class="swiper-slide"><img src="ad3.jpeg" style="height: 800px;width: 700px;"></div>
+          <div class="swiper-slide"><img src="ad4.jpeg" style="height: 800px;width: 700px;"></div>
+          <div class="swiper-slide"><img src="ad5.jpeg" style="height: 800px;width: 700px;"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>-->
+    <section class="sec">
+        
+        <div class="logos">
+            <div class="logo hidden">
+                <div class="card" style="margin-left: 20px;">
+                    
+                    <div class="bg"><img src="LandingPageImages/Cafe.png" style="height: 100%;width: 100%; "></div>
+                    <div class="blob">
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="logos">
+            <div class="logo hidden">
+                
+                <div class="card">
+                    
+                  <div class="bg"><img src="LandingPageImages/restaurant.jpg" style="height: 100%;width: 100%; "></div>
+                  <div class="blob">
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="logos">
+            <div class="logo hidden">
+                <div class="card">
+                    
+                  <div class="bg"><img src="LandingPageImages/mall.jpg" style="height: 100%;width: 100%; "></div>
+                  <div class="blob">
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="logos">
+            <div class="logo hidden">
+                <div class="card">
+                    
+                  <div class="bg"><img src="LandingPageImages/palace.jpg" style="height: 100%;width: 100%; "></div>
+                  <div class="blob">
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="logos">
+            <div class="logo hidden">
+                
+                <div class="card">
+                    
+                  <div class="bg"><img src="LandingPageImages/ub'.jpg" style="height: 100%;width: 100%; "></div>
+                  <div class="blob">
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br>
+  
+
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4> Company </h4>
+                    <ul>
+                        <li id="links" ><a href='#' disabled>About us</a></li>
+                        <li id="links"><a href='#' disabled> Our Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> Policy </h4>
+                    <ul>
+                        <li id="links"><a href='privacyPolicy.html'>Privacy Policy</a></li>
+                        <li id="links"><a href='#' disabled> Affiliate Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> Get Help</h4>
+                    <ul>
+                        <li id="links"><a href='FAQ_Page.html'> FAQ </a></li>
+                        <li id="links"><a href='chatWithUs.html'>  Chat with Us </a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> follow us </h4>
+                    <div class="social-links">
+                        <a href='#'><i class="fab fa-facebook-f"></i></a>
+                        <a href='#'><i class="fab fa-twitter"></i></a>
+                        <a href='#'><i class="fab fa-instagram"></i></a>
+                        <a href='#'><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+  
+                </div>
+                    <h1 id="copyright">Copyright © <strong id="logoF">InBetween</strong></h1>
+            </div>
+        </div>
+    </footer>
+  
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let he11 = document.getElementById('he1');
+            let he22 = document.getElementById('he2');
+
+            window.addEventListener('scroll', function() {
+                let value = window.scrollY;
+                he11.style.marginRight = value * 4 + 'px';
+                he22.style.marginLeft = value * 4 + 'px';
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        entry.target.classList.remove('show');
+                    }
+                });
+            });
+
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+
+        const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+        window.addEventListener("mousemove", function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorOutline.style.left = `${posX - 15}px`;
+            cursorOutline.style.top = `${posY - 15}px`;
+
+            $(document).ready(function() {
+    var cursorOutline = $('#cursorOutline');
+    var posX = 100;
+    var posY = 100;
+
+    cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, {
+        duration: 500,
+        complete: function() {
+        }
+    });
+});
+});
+        window.addEventListener('mousemove', function(e) {
+    var arr = [1, 0.9, 0.8, 0.5, 0.2];
+
+    arr.forEach(function(i) {
+        var x = (1 - i) * 75;
+        var star = document.createElement('div');
+
+        star.className = 'star';
+        star.style.top = e.pageY + Math.round(Math.random() * x - x / 2) + 'px';
+        star.style.left = e.pageX + Math.round(Math.random() * x - x / 2) + 'px';
+
+        document.body.appendChild(star);
+
+        window.setTimeout(function() {
+            document.body.removeChild(star);
+        }, Math.round(Math.random() * i * 600));
+    });
+}, false);
+    </script>
+    <script>
+        const cursor = new MouseFollower({
+            container: '.section',
+            speed: 0.3
+        });
+       
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+    </script>
+    <script>
+      var loader = document.getElementById("preloader");
+      window.addEventListener("load",function(){
+        loader.style.display = "none";
+      })
+    </script>
+</body>
+</html>
+

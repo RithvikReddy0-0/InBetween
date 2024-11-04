@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Feedback Page</title>
+
+        <link href="https://db.onlinewebfonts.com/c/20e9fce1ca54ce1d7b7a7329de9bdaef?family=Gistesy" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js"></script>
+        <link rel="icon" href="Logo1.png" type="image/png">
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <script src="Navigation.js"></script>
+        <script src="profilePhoto.js"></script>
+
+        <link rel ="stylesheet" href= "HeaderCSS.css">
+        <link rel ="stylesheet" href= "FooterCSS.css">
+        <link rel ="stylesheet" href= "navstyle.css">
+
+
+
+        <style>
+    
+    .alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin: 15px 0px;
+    width: 515px;
+    display: none;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin: 0 15px 0 15px;
+    color: white;
+    font-weight: bold;
+    float: left;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+
+            body{
+
+                color: #754f33; 
+
+                background-color:#ebdcd1;
+                overflow-y: scroll;
+            }
+            .block{
+                margin-left: 70px;
+
+            }
+            input[type="radio"] {
+                display: none;
+            }
+            input[type="radio"] + label {
+                display: inline-block;
+                cursor: pointer;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-right: 10px;
+                transition: all 0.3s ease;
+                background-color: #ffffff;
+
+            }
+            input[type="radio"] + label:hover {
+                display: inline-block;
+                cursor: pointer;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-right: 10px;
+                transform: translateY(-5px);
+
+            }
+            input[type="radio"]:checked + label {
+                background-color: #754f33;
+                color: white;
+                border-color: #754f33;
+                box-shadow:2px 2px 2px rgb(138, 111, 3);
+            }
+            input[type="submit"]{
+                background-color:#754f33;
+                color:white;
+                border:none;
+                font-size:15px;
+                cursor:pointer;
+                margin: 10px 0pc;
+                padding: 10px 20px;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+            }
+            input[type="submit"]:hover{
+                background-color:#ad7045;
+                color:white;
+                border:none;
+                font-size:15px;
+                cursor:pointer;
+                margin: 10px 0pc;
+                padding: 10px 20px;
+                border-radius: 12px;
+                transform: translateY(-5px);
+            }
+            input[type="reset"]{
+                background-color:white;
+                color:#754f33;
+                border:none;
+                font-size:15px;
+                cursor:pointer;
+                padding: 10px 20px;
+                border-radius: 12px;
+
+                transition: all 0.3s ease;
+
+
+            }
+            input[type="reset"]:hover{
+                background-color:rgb(226, 226, 226);
+                color:#754f33;
+                border:none;
+                font-size:15px;
+                cursor:pointer;
+                padding: 10px 20px;
+                transform: translateY(-5px);
+
+            }
+            textarea{
+                border:none;
+                box-shadow:2px 2px rgb(138, 111, 3);
+                border:2px solid #754f33;
+
+                    resize: none; 
+                
+            }
+            textarea:focus{
+                outline:none;
+                box-shadow:none;
+            }
+            h2,#thanks{
+                margin-left:35px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }         
+          
+
+
+        </style>
+
+
+
+    </head>
+    <body onload="changePhoto()">  
+        
+     
+        <header id="Header">
+            <div id = 'mySidebar' class = 'sidebar'>
+                <a href = 'javascript:void(0)' class = 'close' onclick = "closeNav()">x</a>
+                <a href = "LandingPageOut.html">About</a>
+                <a href = "MainPage.html">In Between</a>
+                <a href = "ExplorePage.html">Area-Specific</a>
+                <a href = "searchUsers.html">Search Users</a>
+                <a href = "chatWithUs.html">Need Help?</a>
+                <a href = "FAQ_Page.html">FAQ</a>
+                <a href = "feedbackPage.html">Feedback</a>
+            </div>
+            <div class = "header">
+                <div id ="hamburger" >
+                    <button class ='open' onclick = "openNav()">&#9776;</button>
+                </div>
+                <h1 id="Brand">In Between</h1>
+    
+                <div class="profile">
+                    <p id="profileName"> <p>
+                    <p id="profileTag"></p>
+                </div>
+
+                <div class="dropdownL">
+                        <a href="#" disabled><img src="" id="profile-icon"></a>
+                    <div class="dropdown-contentL">
+                        <a href="LogInPage.html"  >Log Out</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </header>
+    
+
+
+        <h2>Feedback Form</h2>
+        <i id ="thanks">We thank you for your valuable time</i>
+        <hr style = "border:1px solid rgb(138,111,2);">
+        <br>
+
+        <div class ="block">
+            <form method="post" action="ThankYouPage.html" onsubmit="return FeedbackValidation()">
+                <label>1. Did you encounter any difficulties while reaching your meet-up location?</label><br><br>
+                <input type = "radio" name = "first" id = "radio1"  >
+                <label for = "radio1">Yes</label>
+                <input type = "radio" name = "first" id ="radio2" >
+                <label for = "radio2">No</label>  
+                <input type ="radio" name = "first" id = "radio3" >
+                <label for = "radio3">Sometimes</label> 
+                <br>
+                <br>
+                <label>2. Were the suggestions appropriate to you?</label><br><br>
+                <input type = "radio" name = "second" id = "radio4" >
+                <label for = "radio4">Yes</label>
+                <input type = "radio" name = "second" id = "radio5" >
+                <label for = "radio5">No</label>
+                <input type ="radio" name = "second" id = "radio6" >
+                
+                <label for = "radio6">Sometimes</label>
+                <br>
+                <br>
+                <label>3. Did you experience any technical issues while using the website?</label><br><br>
+                <input type = "radio" name = "third" id = "radio7" >
+                <label for = "radio7">Yes</label>
+                <input type = "radio" name = "third" id = "radio8" >
+                <label for = "radio8">No</label>
+                <input type ="radio" name = "third" id = "radio9" >
+                <label for = "radio9">Sometimes</label>
+                <br>
+                <br>
+                <label>4. How would you rate the user interface of our meet-up planner?</label><br><br>
+                <input type = "radio" name ="fourth" id = "radio10" >
+                <label for = "radio10">Excellent</label>
+                <input type = "radio" name ="fourth" id = "radio11" >
+                <label for = "radio11">Good</label>
+                <input type = "radio" name ="fourth" id = "radio12" >  
+                <label for = "radio12">Average</label>
+                <input type = "radio" name ="fourth" id = "radio13" > 
+                <label for = "radio13">Poor</label>
+                <br>
+                <br>
+                <label>5. How would you rate your overall experience with our meet-up planner website?</label><br><br>
+                <input type = "radio" name ="fifth" id = "radio14" >            
+                
+                <label for = "radio14">Excellent</label>
+                <input type = "radio" name ="fifth" id = "radio15" >
+                <label for = "radio15">Good</label>
+                <input type = "radio" name ="fifth" id = "radio16" >
+                <label for = "radio16">Average</label>
+                <input type = "radio" name ="fifth" id = "radio17" >
+                <label for = "radio17">Poor</label>
+                <br>
+                <br>
+
+
+                <label>6. What features or improvements would you like to see added to our meet-up planner?</label><br><br>
+                <textarea  id="TextA" rows = '5' cols = '68'></textarea>
+                <br>
+
+                <div class="alert" id="Alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    Fill all the options
+                </div>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+
+            </form>
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4> Company </h4>
+                        <ul>
+                            <li id="links" ><a href='LandingPageOut.html' disabled>About us</a></li>
+                            <li id="links"><a href='#' disabled> Our Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> Policy </h4>
+                        <ul>
+                            <li id="links"><a href='privacyPolicy.html'>Privacy Policy</a></li>
+                            <li id="links"><a href='#' disabled> Affiliate Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> Get Help</h4>
+                        <ul>
+                            <li id="links"><a href='FAQ_Page.html'> FAQ </a></li>
+                            <li id="links"><a href='chatWithUs.html'>  Chat with Us </a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> follow us </h4>
+                        <div class="social-links">
+                            <a href='#'><i class="fab fa-facebook-f"></i></a>
+                            <a href='#'><i class="fab fa-twitter"></i></a>
+                            <a href='#'><i class="fab fa-instagram"></i></a>
+                            <a href='#'><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+      
+                    </div>
+                        <h1 id="copyright">Copyright © <strong id="logoF">InBetween</strong></h1>
+                </div>
+            </div>
+        </footer>
+      
+
+
+        <script>
+            function openNav(){
+                document.getElementById("mySidebar").style.width = "200px";
+            }
+
+            function closeNav(){
+                document.getElementById("mySidebar").style.width = "0";
+            }
+
+            function FeedbackValidation(){
+                var j = 0
+                for(let i = 1;i<4;i++){
+                    var x = document.getElementById("radio"+i).checked;
+                    if(x==true){
+                        j +=1;
+                    }
+                }
+
+                for(let i = 4;i<7;i++){
+                    var x = document.getElementById("radio"+i).checked;
+                    if(x==true){
+                        j +=1;
+                    }
+                }
+
+                for(let i = 7;i<10;i++){
+                    var x = document.getElementById("radio"+i).checked;
+                    if(x==true){
+                        j +=1;
+                    }
+                }
+
+
+                for(let i = 10;i<14;i++){
+                    var x = document.getElementById("radio"+i).checked;
+                    if(x==true){
+                        j +=1;
+                    }
+                }
+
+                for(let i = 14;i<18;i++){
+                    var x = document.getElementById("radio"+i).checked;
+                    if(x==true){
+                        j +=1;
+                    }
+                }
+          
+
+
+
+                if(j<5){
+                    document.getElementById("Alert").style.display='block';
+                    
+                    return false;
+                }else return true;
+            
+
+        }
+
+
+        </script>
+    
+    </body>
+</html>

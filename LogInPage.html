@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo1.png" type="image/png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+        crossorigin="anonymous">
+
+
+        <script>
+            let captcha;
+        function generate() {
+        
+            // Clear old input
+            document.getElementById("subt").value = "";
+        
+
+            captcha = document.getElementById("image");
+            let uniquechar = "";
+        
+            const randomchar =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        
+            // Generate captcha for length of
+            // 5 with random character
+            for (let i = 1; i < 5; i++) {
+                uniquechar += randomchar.charAt(
+                    Math.random() * randomchar.length)
+            }
+        
+            // Store generated input
+            captcha.innerHTML = uniquechar;
+        }
+        
+
+        
+        </script>
+        
+    <title>Login/Sign up Page</title>
+    <style>
+        body{
+            background-color: #ebdcd1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .main {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #754f33;
+            max-height: 560px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px 4px #754f33;
+            width: 420px;
+            margin-top: 90px;
+          }
+          
+          .form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 24px;
+          }
+          
+          /*checkbox to switch from sign up to login*/
+          #chk {
+            display: none;
+            
+          }
+          
+          /*Login*/
+          .login {
+            background: #754f33;
+            color: #fff;
+            
+            position: relative;
+            width: 100%;
+            height: 100%;
+          }
+          
+          .login label {
+            margin: 25% 0 5%;
+          }
+          
+          label {
+            color: #fff;
+            font-size: 2rem;
+            justify-content: center;
+            display: flex;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+          }
+          
+          .input {
+            width: (100%-20px);
+            height: 40px;
+            margin-bottom: 20px;
+            background: #e0dede;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+          }
+          
+          /*Register*/
+          .register {
+            background-color: #ebdcd1;
+            border-radius: 60% / 10%;
+            transform: translateY(18%);
+            transition: .8s ease-in-out;
+
+          }
+          
+          .register label {
+            color: #754f33;
+
+            margin-top: 15px;
+            transform: scale(.6);
+          }
+          
+          #chk:checked ~ .register {    
+            transform: translateY(-45%);
+          }
+          
+          #chk:checked ~ .register label {
+            transform: scale(1);
+            margin: 10% 0 5%;
+          }
+          
+          #chk:checked ~ .login label {
+            transform: scale(.6);
+            margin: 5% 0 5%;
+          }   
+          /*Button*/
+          .form button {
+            width: 85%;
+            height: 40px;
+            margin: 12px auto 10%;
+            color: #754f33;
+            background: #ebdcd1;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: .2s ease-in;
+          }
+          
+          .form button:hover {
+            background-color: #fff;
+            color: #754f33;
+            transform: translateY(-2px);
+
+          }
+          .form1 button {
+            width: 85%;
+            height: 40px;
+            margin: 12px auto 10%;
+            color: #fff;
+            background: #754f33;
+
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: .2s ease-in;
+            margin-bottom: 100px;
+          }
+          
+          .form1 button:hover {
+            background-color: #93673e;
+            color: #fff;
+
+            transform: translateY(-2px);
+
+          }
+
+          #usr{
+            margin-top: 30px;
+          }
+          .text-fieldS:focus {
+            padding-left: 10px ;
+            border-color: #754f33;
+            box-shadow: 0 0 5px #754f33;
+            }
+
+        .text-fieldS::placeholder {
+            padding-left: 10px ;
+
+            color: #999;
+            padding-left: 10px;
+
+        }
+        
+        .text-fieldS {
+
+            width: calc(100% - 75px);
+            padding: 10px 0px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        .submit-button {
+            width: calc(100% - 75px);
+
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color: #754f33;
+            background-color: #ebdcd1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease;
+
+        }
+        .submit-button:hover {
+            background-color: #fff; 
+            transform: translateY(-2px);
+            
+        }
+        .text-fieldS1:focus {
+            padding-left: 10px ;
+            border-color: #754f33;
+            box-shadow: 0 0 5px #754f33;
+            }
+
+        .text-fieldS1::placeholder {
+            padding-left: 10px ;
+
+            color: #999;
+            padding-left: 10px;
+
+        }
+        
+        .text-fieldS1 {
+
+            width: calc(100% - 123px);
+            padding: 10px 0px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        .submit-button1 {
+            width: calc(100% - 119.8px);
+
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #754f33;
+            color: #ebdcd1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease;
+
+        }
+        .submit-button1:hover {
+            color: #fff;
+
+            background-color: #93673e; 
+            transform: translateY(-2px);
+            
+        }
+
+        #AlertP,#AlertU{
+            color: rgb(255, 167, 167);
+            font-weight: bolder;
+            font-size: 15px;
+ 
+        }
+        #AlertP1,#AlertU1{
+            color: rgb(255, 0, 0);
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #conditions{
+            color: #754f33;
+            font-size: 18px;
+            margin: 8px 0px 0px 7px;
+            
+        }
+
+        #priv{
+            color: #3260f6;
+        }
+
+        /* Hide the default checkbox */
+.container2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .container2 {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.5rem;
+    user-select: none;
+  }
+  
+  .checkmark {
+    transform: scale(0.75);
+    --clr: #15a074;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: 300ms;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container2 input:checked ~ .checkmark {
+    background-color: var(--clr);
+    border-radius: .5rem;
+    animation: pulse 500ms ease-in-out;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container2 input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container2 .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid #E0E0E2;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 #0B6E4F90;
+      rotate: 20deg;
+    }
+  
+    50% {
+      rotate: -20deg;
+    }
+  
+    75% {
+      box-shadow: 0 0 0 10px #0B6E4F60;
+    }
+  
+    100% {
+      box-shadow: 0 0 0 13px #0B6E4F30;
+      rotate: 0;
+    }
+  }
+
+  #terms{
+    display: flex;
+    margin-left: 10px;
+  }
+  #captchaBox{
+    display: flex;
+    margin-left: 37.5px;
+    margin-bottom: 10px;
+  }
+
+  #image{
+    margin-top: 7px;
+    width: 60px;
+    font-weight: 400;
+    height: 40px;
+    user-select: none;
+    text-decoration:line-through;
+    font-style: italic;
+    font-size: x-large;
+    margin-left: 10px;
+    
+}
+
+#AlertC1{
+    margin-top: 10px;
+    color: rgb(255, 0, 0);
+            font-weight: bolder;
+            font-size: 15px;
+}
+
+    </style>
+<body onload="generate()">
+    <center>
+        <div class="main">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+
+                <div class="login">
+                    <form class="form" name="LoginForm" method="get" action="MainPage.html" onsubmit="return Lvalidate()">
+                        <label for="chk" aria-hidden="true">Log in</label>   
+                        <input type="text" style="margin:0px;    margin-left: 37.5px;" class="text-fieldS"  id="Username" placeholder="Username" >
+                        <p style="margin:0px;" id="AlertU"></p>            
+                        <input type="password" style="margin:0px;    margin-left: 37.5px;" class="text-fieldS" id="Password" placeholder="Password">
+    
+                        <p style="margin:0px;" id="AlertP"></p>            
+                        <input type="submit" style="margin:0px;    margin-left: 37.5px;" class="submit-button" id="LogInBtn" value="LOGIN">
+                    </form>
+                </div>
+
+        <div class="register">
+                    <form class="form1" name="SigninForm"   method="post" onsubmit="return Svalidate()" style="height: 550px;">
+                        <label for="chk" aria-hidden="true">Register</label>
+                        <input type="text" class="text-fieldS1" id="Username1" placeholder="Username" style="margin-top:20px">
+                        <p id="AlertU1"></p>            
+                        <input type="password" class="text-fieldS1"  id="Password2" placeholder="Password">
+                        <br>
+                        <br>
+    
+                        <input type="password" class="text-fieldS1"  id="Password1" placeholder="Re-enter Password">
+                        <p id="AlertP1"></p>
+                       
+                       <div id="captchaBox" style="height:45px;margin-left:67px">
+
+                        <input type="text" class="text-fieldS1"  id="subt" placeholder="Captcha" style="width:180px; height:18.5px">
+                        <div class="inline" onclick="generate()">
+                            <i class="fas fa-sync" style="margin:12.5px 0px 0px 10px"></i>
+                        </div>
+                    
+                        <div id="image" 
+                        class="inline" 
+                        selectable="False">
+                   </div>
+
+
+                     </div>
+                       
+                        
+                     <p id="AlertC1"></p>
+
+
+
+                        <div id="terms">
+
+                        <label class="container2" style="margin-top:2px">
+                            <input id="tandc" type="checkbox" onclick="signin()">
+                            <div class="checkmark" style="margin-left: 48px;"></div>
+                          </label> 
+
+                          
+                        <p id="conditions">I accept the 
+                          <a id="priv" href="privacyPolicy.html">terms and conditions</a></p>          
+                        </div>
+                        <input type="submit" class="submit-button1" id="sign" value="SIGN UP" style="background-color: grey;">
+                       
+                    </form>
+                </div>
+        </div>
+    </center>
+    <script>
+
+        function Lvalidate(){
+            var name = document.getElementById("Username").value;
+            name = name.toLowerCase();
+            console.log(name);
+        
+            var Pass = document.getElementById("Password").value;
+            console.log(Pass);
+        
+            if(name=="siddhartha.ravva@gmail.com" || name=="yaswanth.kumar@gmail.com" || name=="rithvik.mukkara@gmail.com"){
+                document.getElementById("AlertU").innerHTML=" ";                 
+
+
+            } else {
+                document.getElementById("AlertU").innerHTML="Invalid Username";  
+                return false;
+            }
+            
+            if(name=="siddhartha.ravva@gmail.com" && Pass=="siid224"){
+                document.getElementById("AlertP").innerHTML=" ";  
+                localStorage.setItem('myVariable', 1);
+
+
+                return true;
+            }else if(name=="yaswanth.kumar@gmail.com" && Pass=="yaas188"){
+                document.getElementById("AlertP").innerHTML=" ";  
+                localStorage.setItem('myVariable', 2);
+
+
+                return true;
+            }else if(name=="rithvik.mukkara@gmail.com" && Pass=="rithvik205"){
+                document.getElementById("AlertP").innerHTML=" ";  
+                localStorage.setItem('myVariable', 3);
+
+
+                return true;
+            }else if(Pass.length<6){
+                document.getElementById("AlertP").innerHTML="Password entered is lesser than 6 alphabets";  
+                return false;
+        
+            }else{
+                document.getElementById("AlertP").innerHTML="Invalid Password";  
+                return false;
+            }
+        }  
+
+        function Svalidate() {
+            var name = document.getElementById("Username1").value;
+            name = name.toLowerCase();
+        
+            var Pass = document.getElementById("Password2").value;
+            var Pass1 = document.getElementById("Password1").value;
+            
+                      
+            if (name.indexOf("@gmail.com")>4 || name.indexOf("@yahoo.com")>4 ){
+                document.getElementById("AlertU1").innerHTML = " "; 
+            } else {
+                document.getElementById("AlertU1").innerHTML = "Invalid Email";         
+                return false;
+            }
+            if (Pass.length < 6 || Pass.match("_")!=null) {
+                document.getElementById("AlertP1").innerHTML = "Password entered is less than 6 characters or contains _";  
+                return false;
+            } else if(Pass1!=Pass) {
+                document.getElementById("AlertP1").innerHTML = "Passwords do not match";  
+                return false;
+            }
+            var captcha = document.getElementById("image");
+            var usr_input = document.getElementById("subt").value;
+
+                if (usr_input != captcha.innerHTML) {
+                    document.getElementById("AlertC1").innerHTML = "Captcha code does not match";  
+                    return false;
+
+                }
+                else {
+                    document.getElementById("AlertC1").innerHTML = "";
+
+
+                }
+
+                let terms = document.getElementById('tandc').checked;
+                console.log(terms);
+
+                if(terms==false){
+
+                    return false;
+                }else return true;
+
+            }
+        
+            function signin(){
+                let button = document.getElementById('sign');
+                let terms = document.getElementById('tandc').checked;
+                if(terms==false){
+                 button.style.backgroundColor="grey";
+                 button.disabled=false;
+                 
+
+            }else{
+                button.style.backgroundColor="#754f33";
+                button.disabled=false;
+            }
+        }
+
+    </script>
+</body>
+</html>

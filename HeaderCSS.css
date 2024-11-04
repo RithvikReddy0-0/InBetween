@@ -1,0 +1,89 @@
+
+.header{
+    background-color:#754f33;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0;
+    height: 80px;
+}
+
+h1{
+    font-family:'Gistesy';
+    font-size:40px;
+    padding-left:450px;;
+    color:white;
+}
+
+#profile-icon {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    margin-right: 120px; 
+    margin-left:10px;
+    border:1px solid whitesmoke;
+}
+
+.profile p {
+    color: white;
+    margin-left:10px;
+    
+}
+#profileName{
+    margin-bottom:-7px;
+    font-size:20px;
+}
+#Brand{
+    margin-left: 155px;
+    padding-right: 325px;
+}
+.container{
+    max-width: 1170px;
+    background-color: #754f33;
+    margin:auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    height: 150px;
+}   
+
+
+
+.dropbtnL {
+    background-color: #754f33; 
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+
+}             
+.dropbtnL:hover, .dropbtnL:focus {
+    background-color: #654528; 
+}              
+.dropdown-contentL {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    overflow-y: auto;
+    border-radius: 8px;
+    transition: all 1s ease;
+}                
+.dropdown-contentL a {
+    transition: all 1s ease;
+
+    color: #654528;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}                
+.dropdown-contentL a:hover {background-color: #f1f1f1;}             
+.dropdownL:hover .dropdown-contentL {display: block;}               
+.dropdownL:hover .dropbtnL {background-color: #754f33;}
+ 

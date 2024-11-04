@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+    <head>
+        <title>FAQ's</title>
+       
+        <link href="https://db.onlinewebfonts.com/c/20e9fce1ca54ce1d7b7a7329de9bdaef?family=Gistesy" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js"
+    ></script>
+    <link rel="icon" href="Logo1.png" type="image/png">
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <script src="profilePhoto.js"></script>
+        <script src="Navigation.js"></script>
+        <link rel ="stylesheet" href= "HeaderCSS.css">
+        <link rel ="stylesheet" href= "FooterCSS.css">
+        <link rel ="stylesheet" href= "navstyle.css">
+
+
+       
+       <style>
+            body {
+                background-color:#ebdcd1; /* Default background color */
+                color: #754f33; 
+                margin: 0;/* Default text color */
+                overflow-y: scroll;
+            }
+            input[type="text"]{
+                border: none;
+                font-family:Cambria;
+                font-size:18px;
+                background-color:whitesmoke;    
+                height:35px;
+                cursor:pointer;
+                box-shadow:2px 2px rgb(138,111,3);
+                background-color: #754f33;
+                color:white;
+                padding-left:15px;
+            }
+            input[type="text"]:hover{
+                box-shadow:none;
+                background-color: #a06e4c;
+            }
+            input[type="text"]:focus{
+                outline:none;
+            }
+            textarea{
+                display:none;
+                border:2px solid #754f33;
+                box-shadow:none;
+                border-top:none;
+                font-family:Cambria;
+                font-size:16px;
+                resize: none; 
+            }
+            textarea:hover{
+                box-shadow:2px 2px rgb(138,111,3);
+            }
+            textarea:focus{
+                outline:none;
+            }
+            #FAQ{
+                margin-bottom: 31px;
+            }
+            h2{
+                margin-left: 10px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+        </style>
+
+
+    </head>
+    <body onload="changePhoto()">
+      
+     
+        <header id="Header">
+            <div id = 'mySidebar' class = 'sidebar'>
+                <a href = 'javascript:void(0)' class = 'close' onclick = "closeNav()">x</a>
+                <a href = "#">About</a>
+                <a href = "MainPage.html">In Between</a>
+                <a href = "ExplorePage.html">Area-Specific</a>
+                <a href = "searchUsers.html">Search Users</a>
+                <a href = "chatWithUs.html">Need Help?</a>
+                <a href = "FAQ_Page.html">FAQ</a>
+                <a href = "feedbackPage.html">Feedback</a>
+            </div>
+            <div class = "header">
+                <div id ="hamburger" >
+                    <button class ='open' onclick = "openNav()">&#9776;</button>
+                </div>
+                <h1 id="Brand">In Between</h1>
+    
+                <div class="profile">
+                    <p id="profileName"> <p>
+                    <p id="profileTag"></p>
+                </div>
+
+                <div class="dropdownL">
+                        <a href="#" disabled><img src="" id="profile-icon"></a>
+                    <div class="dropdown-contentL">
+                        <a href="LogInPage.html"  >Log Out</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </header>
+    
+
+
+        <h2>Frequently Asked Questions</h2>
+        <hr style = "border:1px solid rgb(138,111,2)">
+        <br>
+        <center>
+        <div id ='FAQ'>
+        <input type ="text" size ="60" id = "one" value ="How to change date of the meet-up?" onclick="info(1)" readonly><br>
+        <textarea rows = '5' cols = '70' id ="textarea1" style ="text-align:left;"readonly>
+            Text your meetup buddy, informing them about the postpone 
+            or prepone your meetup. If you have made reservations 
+            at your meetup place, then use the contact info provided 
+            in the 'Upcoming Meetup' to inform them about date change.</textarea><br>
+        <input type ="text" size ="60" id = "two" value ="How to cancel my Subscription?" onclick="info(2)" readonly><br>
+        <textarea rows = '5' cols = '70' id ='textarea2' readonly>
+            You can click on the 'Subscription' option provided in
+            the Profile page, and click on the option 'Unsubscribe'.
+            Or you can simply cancel your subscription by not renewing it. 
+            :(</textarea><br>
+        <input type ="text" size ="60" id = "three" value ="How to share the meet-up location with my friends?" onclick="info(3)" readonly><br>
+        <textarea rows = '5' cols = '70' id ='textarea3' readonly>
+            After your meetup location is fixed, you can click on that
+            place in the map frame, and click on 'share' option to share
+            it with your friends. </textarea><br>
+        <input type ="text" size = "60" id = "four" value = "How do I search for places near a particular location?" onclick ="info(4)" readonly><br>
+        <textarea rows = '5' cols = '70' id ='textarea4' readonly>
+            You can goto the 'Area Specific' page by clicking on the 
+            hamburger button (&#9776;). You can even limit the distance
+            around your location.</textarea><br>
+        <input type ="text" size = "60" id = "five" value = "How can I delete my account?" onclick ="info(5)" readonly><br>
+        <textarea rows = '5' cols = '70' id ='textarea5' readonly>
+            You can click on the 'Account' option provided in the 
+            Profile page, You can delete your account after completing 
+            password verification.</textarea><br><br><br>
+        </div>   
+    </center>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4> Company </h4>
+                    <ul>
+                        <li id="links" ><a href='#' disabled>About us</a></li>
+                        <li id="links"><a href='#' disabled> Our Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> Policy </h4>
+                    <ul>
+                        <li id="links"><a href='privacyPolicy.html'>Privacy Policy</a></li>
+                        <li id="links"><a href='#' disabled> Affiliate Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> Get Help</h4>
+                    <ul>
+                        <li id="links"><a href='FAQ_Page.html'> FAQ </a></li>
+                        <li id="links"><a href='chatWithUs.html'>  Chat with Us </a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4> follow us </h4>
+                    <div class="social-links">
+                        <a href='#'><i class="fab fa-facebook-f"></i></a>
+                        <a href='#'><i class="fab fa-twitter"></i></a>
+                        <a href='#'><i class="fab fa-instagram"></i></a>
+                        <a href='#'><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+  
+                </div>
+                    <h1 id="copyright">Copyright © <strong id="logoF">InBetween</strong></h1>
+            </div>
+        </div>
+    </footer>
+  
+
+
+        <script>    
+            function info(v){
+                if(v==1){
+                    var x = document.getElementById("textarea1");
+                }
+                else if(v==2){
+                    var x = document.getElementById("textarea2");
+                }
+                else if(v==3){
+                    var x = document.getElementById("textarea3");
+                }
+                else if(v==4){
+                    var x = document.getElementById("textarea4");
+                }
+                else if(v==5){
+                    var x = document.getElementById("textarea5");
+                }
+                if(x.style.display ==='none'){
+                    x.style.display ='block';
+                }
+                else{
+                    x.style.display ='none';
+                }
+            }
+           
+
+        </script>
+   
+    </body>
+</html>

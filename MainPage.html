@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Finding places Along route</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://db.onlinewebfonts.com/c/20e9fce1ca54ce1d7b7a7329de9bdaef?family=Gistesy" rel="stylesheet">
+        <link rel="icon" href="Logo1.png" type="image/png">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <script src="profilePhoto.js"></script>
+        <script src="Navigation.js"></script>
+        <link rel ="stylesheet" href= "HeaderCSS.css">
+        <link rel ="stylesheet" href= "FooterCSS.css">
+        <link rel ="stylesheet" href= "navstyle.css">
+     
+        <style>                      
+            #map {                    
+                height: 575px;
+                width: 60%;
+                border-radius: 25px;
+                margin-left: 55px;
+            }
+            #MainDiv{
+                
+                padding-top:150px;
+                display: flex;
+            }
+
+            body {
+                background-color:#ebdcd1; 
+                color: #754f33; 
+                margin: 0;
+                overflow-y: scroll;
+            }
+
+
+  
+                .text-field-containerS {
+                    position: relative;
+                    width: 450px;
+                    margin: 0px 10px 0px 35px;      
+                }
+                .text-fieldS:focus {
+                outline: none;
+                border-color: #754f33;
+                box-shadow: 0 0 5px #754f33;
+                }
+                .text-fieldS::placeholder {
+                color: #999;
+                }
+                .text-fieldS {
+                    width: calc(100% - 20px); /* Adjusted width to include padding */
+                    margin: 10px;
+                    padding: 10px;
+                    font-size: 16px;
+                    border: 2px solid #754f33;
+                    border-radius: 8px;
+                    transition: border-color 0.3s ease;
+                }
+                .submit-button {
+                    width: calc(100% - 20px); /* Adjusted width to include padding */
+                    margin: 10px;
+                    padding: 10px ;
+                    font-size: 16px;
+                    color: #fff;
+                    background-color: #754f33;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    transition: transform 0.3s ease;
+
+                }
+                .submit-button:hover {
+                    background-color: #93673e; 
+                    transform: translateY(-2px);
+                    
+                }
+                #drpbtn{
+                    padding-right: 35px;
+                    padding: 10px;
+                    color: #654528;
+                    background-color:#ebdcd1;
+                    
+                }
+                #selected{
+                    border-radius: 10px;
+                    width: 275px;
+                    margin: 0px;
+                    padding: 10px 0px 10px 5px;
+                    margin-left: 10px;
+                    color: #654528;
+                    background-color: #ebdcd1;
+                    font-family:Arial, Helvetica, sans-serif;
+
+
+                }
+                .dropbtn {
+                    margin-right: 10px;
+                    background-color: #754f33; /* Brown color */
+                    color: white;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    transition: background-color 0.3s ease;
+
+                }             
+                .dropbtn:hover, .dropbtn:focus {
+                    background-color: #654528; /* Darker brown color */
+                }              
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    max-height: 200px; /* Set a maximum height for the dropdown content */
+                    overflow-y: auto;
+                    border-radius: 8px;
+                    transition: all 1s ease;
+                }                
+                .dropdown-content a {
+                    transition: all 1s ease;
+
+                    color: #654528;
+                    padding: 12px 10px;
+                    text-decoration: none;
+                    display: block;
+                    border-radius: 8px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }                
+                .dropdown-content a:hover {background-color: #f1f1f1;}             
+                .dropdown:hover .dropdown-content {display: block;}               
+                .dropdown:hover .dropbtn {background-color: #654528;}
+                .details{
+                    margin:  10px 0px 10px 10px;
+                    padding-left: 20px;
+                    font-family:Arial, Helvetica, sans-serif;
+
+                }                   
+                #drop{
+                    display: flex;
+                    margin-left: 10px;
+                    padding-left: 10px;
+                    margin: 0px;
+                    align-content:space-between;
+                }    
+               
+                #suggested,#suggested2{
+                    margin-top: 50px;
+                    display: flex;
+                    justify-content: center; /* Center items horizontally */
+                    align-items: center; /* Center items vertically */
+                    max-width: 80%;
+                    text-align: center;
+                    height: 150px; 
+                    
+                }
+                #suggested2{
+                   
+                    margin-top: 95px;
+                    height: 450px; 
+                    margin-bottom:125px;
+                }
+                .place{
+
+                    width:300px;
+                    height:850px;
+                    margin:225px 30px 20px 30px;
+                    padding: 20px;
+                    box-shadow: 0 0 15px #754f33;
+                    background-color:#f1f1f1;
+                    border-radius: 10px;
+                    transition: all 0.5s ease;   
+                    z-index: 1;
+                    max-height: 350px;
+                    overflow: hidden;
+
+                }
+                .place:hover{
+                    transform: scale(1.35);
+                    z-index: 2;
+                    overflow-y:scroll;
+                }
+                #Dmarker{
+                    background-color: #f1f1f1;
+                    border-radius: 12px;
+                    padding-bottom: 2px;
+
+                }
+                #Gmarker{
+                    background-color: #f1f1f1;
+                    border-radius: 12px;
+                    
+                }
+
+
+
+                .data{
+                    margin: 10px;
+                    padding: 1px;
+                    border-radius: 10px;
+                    width: 429px;
+                    background-color: #ebdcd1;
+                }
+               
+                #photoContainerP1,#photoContainerP2,#photoContainerP3,#photoContainerP4,#photoContainerP5,#photoContainerP6{
+                    max-height: 225px;
+                    font-size: 10px;
+                }
+                #SPheading{
+                    font-size: 35px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    margin-top: 75px;
+                    color: #754f33;
+                }
+      
+                
+        </style>
+
+
+    </head>
+    <body  onload="changePhoto()">
+ 
+        <header id="Header">
+            <div id = 'mySidebar' class = 'sidebar'>
+                <a href = 'javascript:void(0)' class = 'close' onclick = "closeNav()">x</a>
+                <a href = "LandingPageOut.html">About</a>
+                <a href = "MainPage.html">In Between</a>
+                <a href = "ExplorePage.html">Area-Specific</a>
+                <a href = "searchUsers.html">Search Users</a>
+                <a href = "chatWithUs.html">Need Help?</a>
+                <a href = "FAQ_Page.html">FAQ</a>
+                <a href = "feedbackPage.html">Feedback</a>
+            </div>
+            <div class = "header">
+                <div id ="hamburger" >
+                    <button class ='open' onclick = "openNav()">&#9776;</button>
+                </div>
+                <h1 id="Brand">In Between</h1>
+    
+                <div class="profile">
+                    <p id="profileName"> <p>
+                    <p id="profileTag"></p>
+                </div>
+
+                <div class="dropdownL">
+                        <a href="#" disabled><img src="" id="profile-icon"></a>
+                    <div class="dropdown-contentL">
+                        <a href="LogInPage.html"  >Log Out</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </header>
+    
+
+
+        <div id="MainDiv">
+            <div id="map"></div>
+                <div class="text-field-containerS">
+                    <div id="Gmarker">
+                        <input type="text" class="text-fieldS" id="start" placeholder="Start Location">
+                        <input type="text" class="text-fieldS" id="end" placeholder="End Location" >
+                        <button class="submit-button" onclick="getCurrentLocation()">Get Current Location</button>
+                        <div class="dropdown">
+                            <div id="drop">
+                                <button id="drpbtn" class="dropbtn" >Select Category</button>
+                                <p id="selected" class="dropbtn"  >Select: </p>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="#" onfocus="choose('Restaurant','restaurant')" >Restaurants</a>
+                                <a href="#" onfocus="choose('Cafe','cafe')">Cafe</a>
+                                <a href="#" onfocus="choose('Museum','museum')">Museum</a>
+                                <a href="#" onfocus="choose('Shopping Mall','shopping_mall')">Shopping Mall</a>
+                                <a href="#" onfocus="choose('Supermarket','supermarket')">Supermarket</a>
+                                <a href="#" onfocus="choose('Tourist attraction','tourist_attraction')">Tourist attraction</a>
+                                <a href="#" onfocus="choose('Library','library')">Library</a>
+                                <a href="#" onfocus="choose('Bakery','bakery')">Bakery</a>
+                                <a href="#" onfocus="choose('Amusement park','amusement_park')">Amusement park</a>
+                                <a href="#" onfocus="choose('Movie Theater','movie_theater')">Movie Theater</a>
+                                <a href="#" onfocus="choose('Church','church')">Church</a>
+                                <a href="#" onfocus="choose('Hindu Temple','hindu_temple')">Hindu Temple</a>
+                            </div>
+                        </div>
+                        <button class="submit-button" onclick="findRestaurantsAlongRoute()">Find places along route</button>
+                    </div>
+                    <br><br>
+                    <div id="Dmarker">
+                        <input type="text" class="text-fieldS"  id="marker" placeholder="Marker Location" >
+                        <button class="submit-button" onclick="calculateDistanceMarker()">Distance and time from marker</button>
+                        <div class="data">
+                            <p class="details" id="distance">Distance: </p>
+                            <p class="details" id="duration">Estimated Duration: </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <center>
+            <h5 id="SPheading">Suggested Places</h5>
+
+        <div id="suggested">
+            <div class="place" id="Sfirst">
+                <img id="photoContainer1" >
+                <p  id="photoContainerP1"></p>
+            </div>
+            <div class="place" id="SSecond">
+                <img id="photoContainer2" >
+                <p  id="photoContainerP2"></p>
+            </div>
+            <div class="place" id="SThird">
+                <img id="photoContainer3" >
+                <p id="photoContainerP3"></p>
+            </div>
+        </div>
+
+        <div id="suggested2">
+            <div class="place" id="S1First">
+                <img id="photoContainer4" >
+                <p  id="photoContainerP4"></p>
+            </div>
+            <div class="place" id="S1Second">
+                <img id="photoContainer5" >
+                <p  id="photoContainerP5"></p>
+            </div>
+            <div class="place" id="S1Third">
+                <img id="photoContainer6" >
+                <p  id="photoContainerP6"></p>
+            </div>
+        </div>
+
+        </center> 
+
+    
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4> Company </h4>
+                        <ul>
+                            <li id="links" ><a href='LandingPageOut.html' disabled>About us</a></li>
+                            <li id="links"><a href='#' disabled> Our Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> Policy </h4>
+                        <ul>
+                            <li id="links"><a href='privacyPolicy.html'>Privacy Policy</a></li>
+                            <li id="links"><a href='#' disabled> Affiliate Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> Get Help</h4>
+                        <ul>
+                            <li id="links"><a href='FAQ_Page.html'> FAQ </a></li>
+                            <li id="links"><a href='chatWithUs.html'>  Chat with Us </a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4> follow us </h4>
+                        <div class="social-links">
+                            <a href='#'><i class="fab fa-facebook-f"></i></a>
+                            <a href='#'><i class="fab fa-twitter"></i></a>
+                            <a href='#'><i class="fab fa-instagram"></i></a>
+                            <a href='#'><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+      
+                    </div>
+                        <h1 id="copyright">Copyright © <strong id="logoF">InBetween</strong></h1>
+                </div>
+            </div>
+        </footer>
+      
+    
+        <script>
+         
+            let markers = [];
+            let markers1 = [];
+            let PlacesIDs = [];
+            let directionsService;
+            let directionsRenderer;
+            let map;
+            let startInput = document.getElementById("start");
+            let endInput = document.getElementById('end');
+            let placeType;
+            let NoOfPlaces;
+            function calculateDistance() {
+
+                const start = document.getElementById('start').value;
+                const end = document.getElementById('end').value;
+
+                const request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: 'DRIVING'
+                };
+
+                directionsService.route(request, function (response, status) {
+                    if (status === 'OK') {
+                        directionsRenderer.setDirections(response);
+                        const route = response.routes[0];
+                        const distance = route.legs[0].distance.text;
+                        const duration = route.legs[0].duration.text;
+
+                        document.getElementById('distance').innerText = `Distance: ${distance}`;
+                        document.getElementById('duration').innerText = `Estimated Duration: ${duration}`;
+
+                    } else {
+                        alert('Error: ' + status);
+                    }
+                });
+            }
+
+            function calculateDistanceMarker() {
+                            const request = {
+                            origin: startInput.value,
+                            destination: document.getElementById('marker').value,
+                            travelMode: 'DRIVING',
+                        };
+                    
+                        directionsService.route(request, function (response, status) {
+                            if (status === 'OK') {
+                                directionsRenderer.setDirections(response);
+                                const route = response.routes[0];
+                                const distance = route.legs[0].distance.text;
+                                const duration = route.legs[0].duration.text;
+            
+                                document.getElementById('distance').innerText = `Distance: ${distance}`;
+                                document.getElementById('duration').innerText = `Estimated Duration: ${duration}`;
+            
+                            } else {
+                                alert('Error: ' + status);
+                            }
+                        });
+            
+            }
+            
+            function choose(t,r){
+                document.getElementById("selected").innerHTML="Select: " + t;
+                placeType=r;
+            }
+
+            function initMap() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var currentLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: currentLocation.lat, lng: currentLocation.lng },
+                            zoom: 16
+                        });
+
+                        directionsService = new google.maps.DirectionsService();
+
+                        directionsRenderer = new google.maps.DirectionsRenderer({
+                            map: map,
+                            polylineOptions: {strokeColor: '#754f33'} 
+                        });
+                        new google.maps.Marker({
+                            position: currentLocation,
+                            title: 'Clicked Location',
+                            map
+                        });
+
+                        map.addListener("click", (event) => {
+                            if (endInput.value == "" || startInput.value == "") {
+                                addMarker(event.latLng, "location");
+                                
+                            }
+                        });
+                    }, function () {
+                        alert('Error: The Geolocation service failed.');
+                    });
+                }
+            }
+
+            function addMarker(location, label) {
+                const marker = new google.maps.Marker({
+                    position: location,
+                    title: label,
+                    map
+                });
+                markers1.push(marker);
+
+                if (startInput.value == "") {
+                    startInput.value = location.lat() + ',' + location.lng();
+                }
+
+                if (startInput.value != "") {
+                    endInput.value = location.lat() + ',' + location.lng();
+                }
+
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    const service = new google.maps.places.PlacesService(map);
+                    service.getDetails({
+                        placeId: marker.placeResult.place_id
+                    }, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            const infowindow = new google.maps.InfoWindow({
+                                content: '<div><strong>' + place.name + '</strong><br>' +
+                                    'Rating: ' + place.rating + '<br>' +
+                                    'Phone: ' + place.formatted_phone_number + '<br>' +
+                                    'Reviews: ' + place.reviews.map(review => '<li>' + review.text + '</li>').join('') + '</div>'
+                            });
+                            infowindow.open(map, marker);
+                            calculateDistance(place.name,startInput);
+                        }
+                    });
+                });
+            }
+
+            function findRestaurantsAlongRoute() {
+                clearMarkers();
+                calculateDistance();
+                NoOfPlaces=0;
+                const bounds = new google.maps.LatLngBounds();
+                const request = {
+                    origin: startInput.value,
+                    destination: endInput.value,
+                    travelMode: google.maps.TravelMode.DRIVING,
+                };
+            
+                directionsService.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setDirections(response);
+                        const route = response.routes[0];
+            
+                        route.legs.forEach((leg) => {
+                            leg.steps.forEach((step) => {
+                                const startLocation = step.start_location;
+                                const endLocation = step.end_location;
+                                const request = {
+                                    location: endLocation,
+                                    radius: 500,
+                                    type: placeType,
+                                };
+            
+                                const service = new google.maps.places.PlacesService(map);
+                                service.nearbySearch(request, (results, status) => {
+                                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                                        results.forEach((place) => {
+                                            const marker = new google.maps.Marker({
+                                                position: place.geometry.location,
+                                                map: map,
+                                                title: place.name,
+                                            });
+                                            getPlaceDetails(place.place_id);
+
+                                            marker.addListener('click', () => {
+                                                const markerPosition = marker.getPosition();
+                                                document.getElementById('marker').value = markerPosition.lat() + ',' + markerPosition.lng();
+                                                const service = new google.maps.places.PlacesService(map);
+                                                service.getDetails({
+                                                    placeId: place.place_id
+                                                }, (place, status) => {
+                                                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                                        const infowindow = new google.maps.InfoWindow({
+                                                            content: '<div><strong>' + place.name + '</strong><br>' +
+                                                                'Rating: ' + place.rating + '<br>' +
+                                                                'Phone: ' + place.formatted_phone_number + '<br>' +
+                                                                'Reviews: ' + place.reviews.map(review => '<li>' + review.text + '</li>').join('') + '</div>'
+                                                        });
+                                                        infowindow.open(map, marker);
+                                                        getPlaceDetails(place.place_id);
+                                                    }
+                                                });
+                                            });
+            
+                                            bounds.extend(marker.getPosition());
+                                            markers.push(marker);
+                                                                     
+                                        });
+                                    }
+                                });
+                            });
+                        });
+            
+                        map.fitBounds(bounds);
+                    } else {
+                        alert("Directions request failed: " + status);
+                    }
+                });
+
+
+            }        
+
+            function clearMarkers() {
+                for (let i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null);
+                }
+                markers = [];
+            }
+            
+            function getCurrentLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        const currentLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        map.setCenter(currentLocation);
+                        startInput.value = currentLocation.lat + ',' + currentLocation.lng;
+                    }, function() {
+                        alert('Error: The Geolocation service failed.');
+                    });
+                } else {
+                    alert('Error: Your browser doesn\'t support geolocation.');
+                }
+            }
+            
+            function getPlaceDetails(placeId) {
+                
+                
+                if(NoOfPlaces<6){
+                    const service = new google.maps.places.PlacesService(map);
+
+                    service.getDetails({
+                        placeId: placeId,
+                    }, (place, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            const photos = place.photos;
+
+                            if (photos && photos.length > 0 && place.rating>3.7 && place.rating<4.9 && PlacesIDs.indexOf(place.name)==-1) {
+
+                                PlacesIDs.push(place.name);
+                                NoOfPlaces+=1;
+                                photos.forEach(function(photo) {
+                                    const url = photo.getUrl({ maxWidth: 175, maxHeight: 175 });
+                                    document.getElementById('photoContainer'+NoOfPlaces).src = url;
+                                    console.log(NoOfPlaces);
+                                    document.getElementById('photoContainerP'+NoOfPlaces).innerHTML ='<div><strong>' + place.name + '</strong><br>' +
+                                        'Rating: ' + place.rating + '<br>' +
+                                        'Phone: ' + place.formatted_phone_number + '<br>' +
+                                        'Review: ' + place.reviews.map(review => '<li>' + review.text + '</li>')+ '</div>' ;
+        
+                                });
+                            }
+                            
+                        
+                        }
+                    });
+                }  
+
+            }            
+
+       
+            function removePlaces(){
+                for(let i = 1;i<6;i++){
+                document.getElementById('photoContainer'+i).src = "d";
+                document.getElementById('photoContainerP'+i).innerHTML ="d";
+                console.log(i);
+            }
+        }
+          
+
+        </script>
+
+        <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js"
+    ></script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn8IQ94FYOnNQAI5UcuNrIxJjkMbz5z-Y&libraries=places&callback=initMap"></script>
+
+    </body>
+</html>
