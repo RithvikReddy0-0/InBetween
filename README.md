@@ -15,11 +15,11 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript, [React.js] *(if applicable)*
-- **Styling**: Tailwind CSS / Bootstrap / Custom CSS *(specify what you used)*
-- **Map Integration**: Google Maps API / Mapbox *(specify what you used)*
-- **Authentication**: Firebase Auth / Custom Backend *(mention your method)*
-- **Chatbot**: Flask + BlenderBot / Dialogflow *(depending on what you used)*
+- **Frontend**: HTML, CSS, JavaScript, [React.js]
+- **Styling**: Tailwind CSS / Bootstrap / Custom CSS
+- **Map Integration**: Google Maps API / Mapbox 
+- **Authentication**: Firebase Auth / Custom Backend
+- **Chatbot**: Flask + BlenderBot / Dialogflow
 
 ## 🚀 Getting Started
 
